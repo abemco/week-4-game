@@ -1,36 +1,74 @@
 
 var random_result;
-var lost;
-var win;
+var lost = 0;
+var win = 0;
+var previous = 0;
 
 
 
 
-random_result = Math.floor(Math.random() * 101) + 19; //hoisting
+var resetAndStart = function () {
 
-
-$("#result").html('Random Result: ' + random_result);
-
-for(var i = 0; i < 4; i++){
-
-    var random = Math.floor(Math.random() * 11) + 1;
-    //console.log(random);
-
-
-    var crystal = $("<div>");
-        crystal.attr({
-            "class": 'crystal',
-            "data-random": random
-        });
-
-    $(".crystals").append(crystal);
-
-}
-
-
-$(".crystal").on('click', function () {
+    //Empting the Crystals
+    $(".crystals").empty();
     
-    console.log($(this).attr('data-random'));
+    //Generate a new result from 19 until 120
+    random_result = Math.floor(Math.random() * 101) + 19; 
+
+        //Adding to the DOM
+        $("#result").html('Random Result: ' + random_result);
+
+        //For loop 4 Crystals
+        for(var i = 0; i < 4; i++){
+
+            //Creating a random number each loop from 1 until 12
+            var random = Math.floor(Math.random() * 11) + 1;         
+
+            var crystal = $("<div>");
+                crystal.attr({
+                    "class": 'crystal',
+                    "data-random": random
+                });
+
+            $(".crystals").append(crystal);
+
+        }
+
+        $("#previous").html("Total Score: " + previous);
+
+    }
+
+resetAndStart();
+    
+    //Event Delegation
+    $(document).on('click', ".crystal", function () {
+        
+        var num = parseInt($(this).attr('data-random'));
+
+        previous += num;
+
+        $("#previous").html("Total Score: " + previous);
+
+        console.log(previous);
+
+        if(previous > random_result){
+            lost++;
+
+            $("#lost").html("Sorry pal try again: " + lost);
+
+            previous = 0;
+
+            resetAndStart();
+        }
+        else if(previous === random_result){
+            win++;
+
+            $("#win").html("You have chosen wisely: " + win);
+
+            previous = 0;
+
+            resetAndStart();
+        }
 
 });
 
