@@ -11,6 +11,11 @@ var resetAndStart = function () {
 
     //Empting the Crystals
     $(".crystals").empty();
+
+    var images = ['assets/images/cup.jpg',
+                  'assets/images/golden.jpg', 
+                  'assets/images/hat.jpg', 
+                  'assets/images/skull.jpg'];
     
     //Generate a new result from 19 until 120
     random_result = Math.floor(Math.random() * 101) + 19; 
@@ -28,6 +33,10 @@ var resetAndStart = function () {
                 crystal.attr({
                     "class": 'crystal',
                     "data-random": random
+                });
+                crystal.css({
+                    "background-image":"url('" + images[i] + "')",
+                    "background-size":"cover"
                 });
 
             $(".crystals").append(crystal);
