@@ -1,22 +1,30 @@
 
-
-.crystal{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+body{
+    background:url('../images/indiana.jpg');
+    height: 100%; 
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Bangers', cursive;
+    font-style: italic;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+    color: rgba(255, 72, 0, 0.897);
+    font-size: 40px;
+    padding-left: 200px;
 }
+
 .crystal{
     border:4px solid white;
     height:150px;
     width:250px;
     padding-left: 5px;
     padding-bottom: 5px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
     transition: box-shadow 1.5s;
 }
 
 .crystal:hover{
-    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 1);
     cursor: pointer;
     padding: 5px; 
     transition: box-shadow 1s;
